@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        text-align: center;
+    }
+    h1{
+        color: red;
+        font-family: cursive;
+        cursor: pointer;
+    }
+    .players {
+    display: flex;
+    margin-left: 29%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.players img {
+    padding: 30px;
+    margin: 15px;
+    height: 200px;
+    width: 200px;
+    border-radius: 25px;
+}
+p.again {
+    font-size: 12px;
+    margin-top: 0;
+}
+h5 {
+    font-family: cursive;
+    font-size: larger;
+    color: hotpink;
+    margin-left: 45px;
+}
+    </style>
+</head>
+<body>
+    <h1 onclick="compareDice()">Refresh Me to play DICE!</h1>
+    <div class="players">
+        <div>
+            <h5>Player1</h5>
+            <img src="dice2.png" alt="you got">
+        </div>
+        
+        <div>
+            <h5>Player2</h5>
+            <img src="dice2.png" alt="you got">
+        </div>
+    </div>
+    <footer>
+        <p>www.dhankhar.org</p>
+    </footer>
+
+<script>
+
+function compareDice(){
+    var x = checkDice1();
+    var y = checkDice2();
+    if(x>y){
+        playerOne();
+    }
+    else if(x<y){
+        playerTwo();
+    }
+    else{
+        gameDraw();
+    }
+}
+function playerOne(){
+    document.getElementsByTagName("h1")[0].innerHTML="♥Player1 won the game <p class='again'>Click again to play more</p>";
+    document.getElementsByTagName("h5")[0].style.backgroundColor="green";
+    document.getElementsByTagName("h5")[1].style.backgroundColor="white";
+    document.getElementsByTagName("h5")[0].style.borderRadius="20px";
+    document.getElementsByTagName("h5")[0].style.width="200px";
+}
+function playerTwo(){
+    document.getElementsByTagName("h1")[0].innerHTML="Player2 won the game♥ <p class='again'>Click again to play more</p>";
+    document.getElementsByTagName("h5")[1].style.backgroundColor="green";
+    document.getElementsByTagName("h5")[0].style.backgroundColor="white";
+    document.getElementsByTagName("h5")[1].style.borderRadius="20px";
+    document.getElementsByTagName("h5")[1].style.width="200px";
+}
+function gameDraw(){
+    document.getElementsByTagName("h1")[0].innerHTML="♥Game is Drawn♥ <p class='again'>Click again to play more</p>";
+    document.getElementsByTagName("h5")[0].style.backgroundColor="brown";
+    document.getElementsByTagName("h5")[0].style.borderRadius="20px";
+    document.getElementsByTagName("h5")[0].style.width="200px";
+    document.getElementsByTagName("h5")[1].style.backgroundColor="brown";
+    document.getElementsByTagName("h5")[1].style.borderRadius="20px";
+    document.getElementsByTagName("h5")[1].style.width="200px";
+
+}
+function checkDice1(){
+    var a = Math.random();
+    a = a*6;
+    a = a+1;
+    a = Math.floor(a);
+    console.log(a);
+    var diceImage = "dice"+ a +".png";
+    document.getElementsByTagName('img')[0].setAttribute('src', diceImage);
+   
+    return a;
+}
+
+function checkDice2(){
+    var b = Math.random();
+    b = b*6;
+    b = b+1;
+    b = Math.floor(b);
+    console.log(b);
+    var diceImageb = "dice"+ b +".png";
+    document.getElementsByTagName('img')[1].setAttribute('src', diceImageb);
+
+    
+    return b;
+}
+</script>
+</body>
+</html>
